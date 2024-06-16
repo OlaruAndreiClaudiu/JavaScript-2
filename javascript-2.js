@@ -16,6 +16,8 @@ function shop() {
     cart.push(stock);
     console.log(stock.length);
     console.log(`You have ${stock.length} products in your cart.`);
+    cart.push(stock.length++);
+    console.log(`There are no more products to be added.`);
   };
 }
 const shopping = shop();
