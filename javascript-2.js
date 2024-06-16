@@ -1,77 +1,22 @@
-let cart = [
-    { id: 1, name: "prod 1", price: 12 },
-    { id: 2, name: "prod 2", price: 20.99 },
+
+function shop() {
+  let stock = [
+    { name: "product 1", price: 15 },
+    { name: "product 2", price: 10 },
+    { name: "product 3", price: 20 },
+    { name: "product 4", price: 25 },
+    { name: "product 5", price: 17 },
+    { name: "product 6", price: 16 },
+    { name: "product 7", price: 16 },
   ];
-  
-  function getProductsFromCart() {
-    return cart;
-  }
-  
-  function countProducts() {
-    return cart.length;
-  }
-  
-  function getNumberOfProductsFromCart() {
-    return `${countProducts()} products.`;
-  }
-  
-  // {id:12, name:'prod 23', price:123}
-  function addProductToCart(product) {
-    cart.push(product);
-  
-    return getUpdatedCart();
-  }
-  
-  function getUpdatedCart() {
-    console.table(cart);
-  
-    return;
-  }
-  
-  function removeProductFromCart(productId) {
-    cart = cart.filter((product) => product.id !== productId);
-  
-    return getUpdatedCart();
-  }
-  
-  function getTotal() {
-    const initialTotalValue = 0; // initially, the total is 0 RON
-  
-    const calculationLogic = (total, product) => {
-      const calculatedTotal = Math.round(total + product.price);
-  
-      return calculatedTotal;
-    };
-  
-    return cart.reduce(calculationLogic, initialTotalValue);
-  }
-  
-  function getCheckoutInfo() {
-    const total = getTotal();
-    const numberOfProducts = countProducts();
-    const productsList = getProductsFromCart();
-    const description = "Your cart contains:" + productsList;
-  
-    //   const info = {
-    //     total: getTotal(),
-    //     numberOfProducts: countProducts(),
-    //     productsList: getProductsFromCart(),
-    //     descriptionMessage: "Your cart contains:" + productsList,
-    //   };
-  
-    // OR
-  
-    //   const info = {
-    //     total,
-    //     numberOfProducts,
-    //     productsList,
-    //     descriptionMessage: description,
-    //   };
-  
-    return {
-      total,
-      numberOfProducts,
-      productsList,
-      descriptionMessage: description,
-    };
-  }
+  console.log(stock.length);
+  console.log(`There are ${stock.length} products in stock.`);
+  let cart = [];
+  return function() {
+    cart.push(stock);
+    console.log(stock.length);
+    console.log(`You have ${stock.length} products in your cart.`);
+  };
+}
+const shopping = shop();
+shopping();
